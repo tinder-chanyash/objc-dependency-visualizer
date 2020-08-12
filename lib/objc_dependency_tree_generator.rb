@@ -15,7 +15,7 @@ class DependencyTreeGenerator
     @options = options
     @options[:derived_data_project_pattern] = '*-*' unless @options[:derived_data_project_pattern]
 
-    @exclusion_prefixes = @options[:exclusion_prefixes] ? @options[:exclusion_prefixes] : 'NS|UI|CA|CG|CI|CF'
+    @exclusion_prefixes = @options[:exclusion_prefixes] ? @options[:exclusion_prefixes] : 'NS|UI|CA|CG|CI|CF|CL|MK|kCV|AV|CM|CV|UUID|kCF|Localized|Log|DDLog|kCIInput|kTNDR|TNDRSparks|Closure|CN|Process|Animation|DD|PHImage|PHCaching|PHPhoto|SCSDK|WK|UN|OT|GAD'
     @object_files_directories = @options[:search_directories]
   end
 
@@ -30,6 +30,7 @@ class DependencyTreeGenerator
     options[:swift_ast_show_parsed_tree] = false
     options[:ignore_primitive_types] = true
     options[:show_inheritance_only] = false
+    options[:ignore_pods] = true
 
     OptionParser.new do |o|
       o.separator 'General options:'
@@ -123,7 +124,7 @@ class DependencyTreeGenerator
 
     update_tree_block = lambda { |source, target| tree.add(source, target) } 
     if @options[:swift_dependencies]
-      SwiftDependenciesGenerator.new.generate_dependencies(@object_files_directories, &update_tree_block)
+      SwiftDependenciesGenerator.new.generate_dependencies(@object_files_directories, @options[:ignore_pods], &update_tree_block)
     else
       ObjcDependenciesGenerator.new.generate_dependencies(@object_files_directories, @options[:use_dwarf], &update_tree_block)
     end

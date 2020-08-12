@@ -202,6 +202,33 @@ class SwiftPrimitives
       'UnsafePointer',
       'Zip2Generator',
       'Zip2Sequence',
+      'URLComponents',
+      'DispatchQueue',
+      'DispatchQoS',
+      'Dispatch',
+      'Thread',
+      'CLLocationCoordinate2D',
+      'MKMapView',
+      '_findStringSwitchCase',
+      'Codable',
+      'Locale',
+      'Decodable',
+      'CodingKey',
+      'Decoder',
+      'ceil',
+      'JSONSerializable',
+      'Substring',
+      'CNContact',
+      'JSONDecoder',
+      'JSON',
+      'Queue',
+      'atan2',
+      'log10',
+      'fabsf',
+      'keyPathObserver',
+      'EXIT_SUCCESS',
+      'fmod',
+      'Selector',
 #Operators      
       '&&',
       '!',
@@ -232,6 +259,9 @@ class SwiftPrimitives
       'sqrt',
       'abs',
       'fabs',
+      'cos',
+      'sin',
+      'asin',
 #Foundation
       'Bundle',
       'CharacterSet',
@@ -249,7 +279,8 @@ class SwiftPrimitives
       'TimeInterval',
       'Timer',
       'URLRequest',
-      'URLCache'      
+      'URLCache',
+      'arc4random'      
     ]).freeze
 
   def self.primitive_types

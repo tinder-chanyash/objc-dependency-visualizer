@@ -235,6 +235,10 @@ let dvvisualizer = {
                     .text(d => d.name.substring(0, this.config.default_max_texts_length));
 
                 this._textNode = svg.selectAll("text");
+                if (this.config.show_texts_near_circles) {
+                    this._textNode.attr("visibility", "visible");
+                    this.simulation.alphaTarget(0.3).restart()
+                }
             },
 
             _link_line: function (d) {
